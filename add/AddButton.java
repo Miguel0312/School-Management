@@ -10,7 +10,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import file.GetStudents;
