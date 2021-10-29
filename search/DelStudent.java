@@ -59,13 +59,14 @@ class Delete implements ActionListener {
    * SearchWindow.updateSchool())
    */
   public void actionPerformed(ActionEvent e) {
+    if (owner.getStudent().getName().equals("") && owner.getStudent().getID().equals("")) {
+      return;
+    }
     String[] options = { "Yes", "No" };
     int confirm = JOptionPane.showOptionDialog(owner,
         "Are you sure that you want to delete " + owner.getStudent().getName() + " data?", "Confirm",
         JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
     if (confirm == JOptionPane.YES_OPTION) {
-      owner.setStudent(new Student("", "", "", "", false));
-      dSpace.displayStudent();
       ObjectOutputStream oos;
       try {
         oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(new File("school.txt"))));
@@ -78,6 +79,8 @@ class Delete implements ActionListener {
       } catch (IOException error) {
         error.printStackTrace();
       }
+      owner.setStudent(new Student("", "", "", "", false));
+      dSpace.displayStudent();
     }
   }
 }

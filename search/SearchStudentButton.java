@@ -55,6 +55,10 @@ class Search implements ActionListener {
     String s = this.input.getText();
     boolean found = false;
 
+    if (s.equals("")) {
+      return;
+    }
+
     this.dSpace.getOwner().setStudent(new Student("", "", "", "", false));
     this.dSpace.displayStudent();
     this.input.setText("");
