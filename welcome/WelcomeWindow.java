@@ -12,6 +12,9 @@ import javax.swing.JPanel;
 import file.GetStudents;
 import people.Student;
 
+/*
+  *Welcome window that allows the user to select whch feature he wants to use: reading the database and adding students to it or searching a specific students and deleting one from the database
+*/
 public class WelcomeWindow extends JFrame {
   ArrayList<Student> school = new ArrayList<Student>();
   File f = new File("school.txt");

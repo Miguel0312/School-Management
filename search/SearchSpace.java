@@ -3,20 +3,19 @@ package search;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import people.Student;
 
+/*
+  *This is the panel where the user inputs the name or the ID of the student that they are searching and uses one of the buttons to launch the search
+*/
 public class SearchSpace extends JPanel {
-  private ArrayList<Student> school;
 
-  public SearchSpace(DisplaySpace d, ArrayList<Student> s) {
-    this.school = s;
+  public SearchSpace(SearchWindow owner, DisplaySpace dSpace) {
 
     this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
     this.setBackground(new Color(180, 200, 219));
@@ -39,9 +38,9 @@ public class SearchSpace extends JPanel {
 
     JPanel buttons = new JPanel();
 
-    SearchStudentButton searchByName = new SearchStudentButton(searchBar, d, false);
-    SearchStudentButton searchByID = new SearchStudentButton(searchBar, d, true);
-    DelStudent delStudent = new DelStudent(d);
+    SearchStudentButton searchByName = new SearchStudentButton(searchBar, dSpace, false);
+    SearchStudentButton searchByID = new SearchStudentButton(searchBar, dSpace, true);
+    DelStudent delStudent = new DelStudent(owner, dSpace);
 
     buttons.add(searchByName);
     buttons.add(searchByID);

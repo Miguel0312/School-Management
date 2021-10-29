@@ -7,22 +7,26 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-public class ClearButton extends JButton{
-	public ClearButton(JTextField[] i) {
-		this.setPreferredSize(new Dimension(90,50));
-		this.setText("Clear");
-		this.addActionListener(new Clear(i));
-	}
+/*
+  *This button clears all the JTextFields of the JPane
+*/
+public class ClearButton extends JButton {
+  public ClearButton(JTextField[] i) {
+    this.setPreferredSize(new Dimension(90, 50));
+    this.setText("Clear");
+    this.addActionListener(new Clear(i));
+  }
 }
 
-class Clear implements ActionListener{
-	private JTextField[] inputs;
-	public Clear(JTextField[] i) {
-		this.inputs = i;
-	}
-	
-	public void actionPerformed(ActionEvent a) {
-		for(JTextField field: inputs)
-			field.setText("");
-	}
+class Clear implements ActionListener {
+  private JTextField[] inputs;
+
+  public Clear(JTextField[] i) {
+    this.inputs = i;
+  }
+
+  public void actionPerformed(ActionEvent a) {
+    for (JTextField field : inputs)
+      field.setText("");
+  }
 }

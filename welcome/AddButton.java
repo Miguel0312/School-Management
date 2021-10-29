@@ -7,6 +7,9 @@ import javax.swing.JButton;
 
 import add.AddWindow;
 
+/*
+  *This button creates a window in which the user can see all the students in the database and add new ones to it
+*/
 public class AddButton extends JButton {
   AddButton() {
     this.setText("Add Student");

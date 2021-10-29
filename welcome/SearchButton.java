@@ -9,23 +9,19 @@ import javax.swing.JButton;
 import file.GetStudents;
 import people.Student;
 
-public class SearchButton extends JButton{
-	private ArrayList<Student> school;
-	SearchButton(ArrayList<Student> s){
-		this.school = s;
-		
-		this.setText("Search Student");
-		this.addActionListener(new a(s));
-	}	
+/*
+  *Creates a window in which the user can search a specific student by ID or by name and delete a student from the database
+*/
+public class SearchButton extends JButton {
+  SearchButton(ArrayList<Student> s) {
+
+    this.setText("Search Student");
+    this.addActionListener(new addSearchWindow());
+  }
 }
 
-class a implements ActionListener{
-	private ArrayList<Student> school;
-	public a(ArrayList<Student> s) {
-		this.school = s;
-	}
-	
-	public void actionPerformed(ActionEvent a){
-		new search.SearchWindow(GetStudents.go());
-	}
+class addSearchWindow implements ActionListener {
+  public void actionPerformed(ActionEvent a) {
+    new search.SearchWindow(GetStudents.go());
+  }
 }

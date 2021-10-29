@@ -14,47 +14,66 @@ import javax.swing.JOptionPane;
 
 import people.Student;
 
+/*
+  *DelStudent is a button that will delete the current selected student in the search window
+*/
 public class DelStudent extends JButton {
-  private DisplaySpace owner;
+  private SearchWindow owner;
+  private DisplaySpace dSpace;
 
-  public DelStudent(DisplaySpace owner) {
+  public DelStudent(SearchWindow owner, DisplaySpace dSpace) {
     this.setText("Delete student's data");
     this.setPreferredSize(new Dimension(200, 50));
     this.owner = owner;
-    this.addActionListener(new Delete(this, this.owner));
+    this.dSpace = dSpace;
+    this.addActionListener(new Delete(this.owner, this.dSpace));
   }
 
 }
 
 class Delete implements ActionListener {
-  private DelStudent owner;
+  private SearchWindow owner;
   private DisplaySpace dSpace;
 
-  public Delete(DelStudent owner, DisplaySpace dSpace) {
+  /*
+   * We store the SearchWindow where the information about the student that the
+   * user wants to delete is saved and the DisplaySpace where these informations
+   * are stored
+   */
+  public Delete(SearchWindow owner, DisplaySpace dSpace) {
     this.owner = owner;
     this.dSpace = dSpace;
   }
 
-  public DisplaySpace getDSpace() {
-    return dSpace;
+  public SearchWindow getOwner() {
+    return owner;
   }
 
+  /*
+   * When the button is pressed, the program will confirm if the user really wants
+   * to delete the information of the student.
+   * 
+   * To delete the information, the program will store all the students that are
+   * not the one that the user wants to delete and then update both the text file
+   * (by overwriting) and the ArrayList (by calling the method
+   * SearchWindow.updateSchool())
+   */
   public void actionPerformed(ActionEvent e) {
     String[] options = { "Yes", "No" };
-    int confirm = JOptionPane.showOptionDialog(dSpace.getOwner(),
-        "Are you sure that you want to delete " + dSpace.getOwner().getStudent().getName() + " data?", "Confirm",
+    int confirm = JOptionPane.showOptionDialog(owner,
+        "Are you sure that you want to delete " + owner.getStudent().getName() + " data?", "Confirm",
         JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
     if (confirm == JOptionPane.YES_OPTION) {
-      this.dSpace.getOwner().setStudent(new Student("", "", "", "", false));
-      this.dSpace.displayStudent();
+      owner.setStudent(new Student("", "", "", "", false));
+      dSpace.displayStudent();
       ObjectOutputStream oos;
       try {
         oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(new File("school.txt"))));
-        for (Student st : dSpace.getOwner().getSchool()) {
-          if (!st.equals(dSpace.getOwner().getStudent()))
+        for (Student st : owner.getSchool()) {
+          if (!st.equals(owner.getStudent()))
             oos.writeObject(st);
         }
-        dSpace.getOwner().updateSchool();
+        owner.updateSchool();
         oos.close();
       } catch (IOException error) {
         error.printStackTrace();

@@ -23,7 +23,7 @@ public class SearchWindow extends JFrame {
 
     this.setLayout(new GridLayout(1, 2));
     DisplaySpace display = new DisplaySpace(this);
-    this.add(new SearchSpace(display, this.school));
+    this.add(new SearchSpace(this, display));
     this.add(display);
     this.setVisible(true);
   }

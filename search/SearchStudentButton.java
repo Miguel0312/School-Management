@@ -11,6 +11,9 @@ import javax.swing.JTextField;
 
 import people.Student;
 
+/*
+  *This class allows the implementation of the buttons to search a student by name or by id, by changing one of the parameters of the constructor
+*/
 public class SearchStudentButton extends JButton {
   private DisplaySpace owner;
   private JTextField input;
@@ -31,6 +34,12 @@ public class SearchStudentButton extends JButton {
 
 }
 
+/*
+ * This method will cycle through the ArrayList that contains the students of a
+ * school until it finds the first student that matches the searched ID or (case
+ * sensitive) fullname, depending on wheter it is a SearchByID or SearchByName
+ * button
+ */
 class Search implements ActionListener {
   private SearchStudentButton owner;
   private DisplaySpace dSpace;

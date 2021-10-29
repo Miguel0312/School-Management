@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 
 import people.Student;
 
+/*
+*This is the panel where the information about the current student will be displayed
+*/
 public class DisplaySpace extends JPanel {
   private JLabel name = new JLabel(), id = new JLabel(), eMail = new JLabel(), major = new JLabel(),
       tuition = new JLabel();
@@ -88,6 +91,15 @@ public class DisplaySpace extends JPanel {
     }
   }
 
+  /*
+   * This method will retrieve the target student stored at the SearchWindow and
+   * display its informations to the user
+   * 
+   * The if/else block to set the tuition message allows the representation of a
+   * student that has no information, effectively cleaning up the display are both
+   * for when the window is first opened and for when the selected student is
+   * deleted.
+   */
   public void displayStudent() {
     Student student = owner.getStudent();
     setName(student.getName());
