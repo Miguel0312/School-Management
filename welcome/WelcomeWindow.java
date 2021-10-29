@@ -18,7 +18,7 @@ public class WelcomeWindow extends JFrame {
 
   public WelcomeWindow() {
 
-    this.setSize(300, 100);
+    this.setSize(500, 200);
     this.setLocationRelativeTo(null);
     this.setResizable(false);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);

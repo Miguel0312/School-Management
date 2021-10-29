@@ -39,11 +39,13 @@ public class SearchSpace extends JPanel {
 
     JPanel buttons = new JPanel();
 
-    SearchStudentButton searchByName = new SearchStudentButton(searchBar, d, this.school, false);
-    SearchStudentButton searchByID = new SearchStudentButton(searchBar, d, this.school, true);
+    SearchStudentButton searchByName = new SearchStudentButton(searchBar, d, false);
+    SearchStudentButton searchByID = new SearchStudentButton(searchBar, d, true);
+    DelStudent delStudent = new DelStudent(d);
 
     buttons.add(searchByName);
     buttons.add(searchByID);
+    buttons.add(delStudent);
     buttons.setBackground(new Color(180, 200, 219));
 
     this.add(buttons);

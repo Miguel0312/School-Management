@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import file.GetStudents;
 import people.Student;
 
 public class SearchWindow extends JFrame {
@@ -33,5 +34,13 @@ public class SearchWindow extends JFrame {
 
   public void setStudent(Student student) {
     this.student = student;
+  }
+
+  public ArrayList<Student> getSchool() {
+    return school;
+  }
+
+  public void updateSchool() {
+    this.school = GetStudents.go();
   }
 }

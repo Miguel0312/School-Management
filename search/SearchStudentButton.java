@@ -13,22 +13,16 @@ import people.Student;
 
 public class SearchStudentButton extends JButton {
   private DisplaySpace owner;
-  private ArrayList<Student> school = new ArrayList<Student>();
   private JTextField input;
   private boolean byID;
 
-  public SearchStudentButton(JTextField text, DisplaySpace owner, ArrayList<Student> s, boolean byID) {
+  public SearchStudentButton(JTextField text, DisplaySpace owner, boolean byID) {
     this.owner = owner;
     this.byID = byID;
     this.setText("Search by " + (byID ? "ID" : "name"));
     this.setPreferredSize(new Dimension(130, 50));
-    this.school = s;
     this.input = text;
     this.addActionListener(new Search(input, this.owner, this));
-  }
-
-  public ArrayList<Student> GetSchool() {
-    return school;
   }
 
   public boolean isByID() {
@@ -56,7 +50,7 @@ class Search implements ActionListener {
     this.dSpace.displayStudent();
     this.input.setText("");
     try {
-      ArrayList<Student> school = owner.GetSchool();
+      ArrayList<Student> school = dSpace.getOwner().getSchool();
       if (owner.isByID()) {
         for (Student st : school) {
           if (st.getID().equals(s)) {
